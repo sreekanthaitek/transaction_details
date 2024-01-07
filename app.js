@@ -43,6 +43,7 @@ const inputSchema = new mongoose.Schema({
     credit_7d: String,
     totalCredit: Number,
     totalDebit: Number,
+    comment: String,
 })
 
 const InputData = mongoose.model('InputData',inputSchema);
@@ -60,7 +61,7 @@ app.get('/india',(req,res)=>{
 });
 
 app.post('/formDetails',async(req,res)=>{
-    let {date,tran,voucher,sample_1,sample_2,name_1,debit_1d,credit_1d,name_2,debit_2d,credit_2d,name_3,debit_3d,credit_3d,name_4,debit_4d,credit_4d,name_5,debit_5d,credit_5d,name_6,debit_6d,credit_6d,name_7,debit_7d,credit_7d} = req.body;
+    let {date,tran,voucher,sample_1,sample_2,name_1,debit_1d,credit_1d,name_2,debit_2d,credit_2d,name_3,debit_3d,credit_3d,name_4,debit_4d,credit_4d,name_5,debit_5d,credit_5d,name_6,debit_6d,credit_6d,name_7,debit_7d,credit_7d,comment} = req.body;
     let totalCredit = parseFloat(credit_1d)+parseFloat(credit_2d)+parseFloat(credit_3d)+parseFloat(credit_4d)+parseFloat(credit_5d)+parseFloat(credit_6d)+parseFloat(credit_7d);
     let totalDebit = parseFloat(debit_1d)+parseFloat(debit_2d)+parseFloat(debit_3d)+parseFloat(debit_4d)+parseFloat(debit_5d)+parseFloat(debit_6d)+parseFloat(debit_7d);
     try{
@@ -91,6 +92,7 @@ app.post('/formDetails',async(req,res)=>{
             name_7: name_7,
             debit_7d: debit_7d,
             credit_7d: credit_7d,
+            comment: comment,
             totalCredit: totalCredit,
             totalDebit: totalDebit,
         });
@@ -105,7 +107,7 @@ app.post('/formDetails',async(req,res)=>{
 })
 
 app.post('/india',async(req,res)=>{
-    let {date,tran,voucher,sample_1,sample_2,name_1,debit_1d,credit_1d,name_2,debit_2d,credit_2d,name_3,debit_3d,credit_3d,name_4,debit_4d,credit_4d,name_5,debit_5d,credit_5d,name_6,debit_6d,credit_6d,name_7,debit_7d,credit_7d} = req.body;
+    let {date,tran,voucher,sample_1,sample_2,name_1,debit_1d,credit_1d,name_2,debit_2d,credit_2d,name_3,debit_3d,credit_3d,name_4,debit_4d,credit_4d,name_5,debit_5d,credit_5d,name_6,debit_6d,credit_6d,name_7,debit_7d,credit_7d,comment} = req.body;
     let totalCredit = parseFloat(credit_1d)+parseFloat(credit_2d)+parseFloat(credit_3d)+parseFloat(credit_4d)+parseFloat(credit_5d)+parseFloat(credit_6d)+parseFloat(credit_7d);
     let totalDebit = parseFloat(debit_1d)+parseFloat(debit_2d)+parseFloat(debit_3d)+parseFloat(debit_4d)+parseFloat(debit_5d)+parseFloat(debit_6d)+parseFloat(debit_7d);
     try{
@@ -136,6 +138,7 @@ app.post('/india',async(req,res)=>{
             name_7: name_7,
             debit_7d: debit_7d,
             credit_7d: credit_7d,
+            comment: comment,
             totalCredit: totalCredit,
             totalDebit: totalDebit,
         });
